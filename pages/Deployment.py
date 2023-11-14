@@ -10,8 +10,6 @@ def load_model(model_choice):
         return pickle.load(open("models/logreg.pkl", "rb"))
     if model_choice == "Naive Bayes":
         return pickle.load(open("pages/models/gnb.pkl", "rb"))
-    # if model_choice == 'XGBoost':
-    #     return pickle.load(open('models\xgb.pkl', 'rb'))
     if model_choice == "Random Forest":
         return pickle.load(open("models/rf.pkl", "rb"))
 
