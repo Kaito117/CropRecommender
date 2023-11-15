@@ -16,10 +16,10 @@ seed = 41
 train_data = pd.read_csv("train_data_cleaned.csv")
 test_data = pd.read_csv("test_data_cleaned.csv")
 
-X_train = train_data.iloc[:, :8]
+X_train = train_data.iloc[:, 1:8]
 y_train = train_data.iloc[:, 8:]
 
-X_test = test_data.iloc[:, :8]
+X_test = test_data.iloc[:, 1:8]
 y_test = test_data.iloc[:, 8:]
 
 
@@ -51,14 +51,15 @@ rf_clf = RandomForestClassifier(random_state=seed)
 rf_clf.fit(X_train, y_train)
 print_metrics(rf_clf, "Random Forest")
 
+models = [logreg_clf, gnb_clf, svc_clf, rf_clf]
+filenames = ["logreg", "gnb", "svc", "rf"]
+
 
 def store_models(store=False):
     if store:
-        with open("gnb.pkl", "wb") as file:
-            pickle.dump(gnb_clf, file)
+        for idx, filename in enumerate(filenames):
+            with open(filename + ".pkl", "wb") as file:
+                pickle.dump(models[idx], file)
 
-        with open("rf.pkl", "wb") as file:
-            pickle.dump(rf_clf, file)
 
-        with open("logreg.pkl", "wb") as file:
-            pickle.dump(logreg_clf, file)
+# store_models(True)

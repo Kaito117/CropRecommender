@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 
-model = pickle.load(open("models/GaussianNB().pkl", "rb"))
+model = pickle.load(open("models/gnb.pkl", "rb"))
 
 
 def suggest_crop(N, P, K, temperature, humidity, ph, rainfall):

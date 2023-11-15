@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 
 model = pickle.load(open("models/gnb.pkl", "rb"))
+scaler = pickle.load(open("models/scaler.pkl", "rb"))
 
 
 def load_model(model_choice):
@@ -18,6 +19,7 @@ def suggest_crop(N, P, K, temperature, humidity, ph, rainfall, model_choice):
     features = np.array([[N, P, K, temperature, humidity, ph, rainfall]]).astype(
         np.float32
     )
+    features = scaler.transform(features)
     # model = load_model(model_choice)
     predictions = model.predict(features)
     # probabilities = model.predict_proba(features)
@@ -51,9 +53,7 @@ def main():
 
     if model_choice is not None:
         if st.button("Suggest crop to grow"):
-            output = suggest_crop(
-                N, P, K, temperature, humidity, ph, rainfall, model_choice
-            )
+            output = suggest_crop(N, P, K, temperature, humidity, ph, rainfall)
 
             st.success(f"Crop to be grown is {output[0]}")
             # st.write(proba[:, 1])
