@@ -3,8 +3,8 @@ import pickle
 import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score
 
-train_data = pd.read_csv("train_data_cleaned.csv")
-test_data = pd.read_csv("test_data_cleaned.csv")
+train_data = pd.read_csv("data/train_data_cleaned.csv")
+test_data = pd.read_csv("data/test_data_cleaned.csv")
 
 X_train = train_data.iloc[:, :8]
 y_train = train_data.iloc[:, 8:]

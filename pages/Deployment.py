@@ -15,7 +15,7 @@ def load_model(model_choice):
         return pickle.load(open("models/rf.pkl", "rb"))
 
 
-def suggest_crop(N, P, K, temperature, humidity, ph, rainfall, model_choice):
+def suggest_crop(N, P, K, temperature, humidity, ph, rainfall):
     features = np.array([[N, P, K, temperature, humidity, ph, rainfall]]).astype(
         np.float32
     )
