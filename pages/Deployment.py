@@ -1,8 +1,10 @@
 import streamlit as st
 import pickle
 import numpy as np
+import os
 
 
+st.write(os.getcwd())
 model = pickle.load(open("models/gnb.pkl", "rb"))
 scaler = pickle.load(open("models/scaler.pkl", "rb"))
 
